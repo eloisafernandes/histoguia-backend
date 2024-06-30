@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/questions")
 public class QuestionController {
@@ -17,6 +19,12 @@ public class QuestionController {
 
     @Autowired
     private ThemeRepository themeRepository;
+
+    @GetMapping
+    public ResponseEntity<List<Question>> getAllQuestions() {
+        List<Question> questions = questionRepository.findAll();
+        return ResponseEntity.ok(questions);
+    }
 
     @PostMapping
     public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
