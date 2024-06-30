@@ -18,7 +18,6 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
-        // Log para exibir o conteúdo recebido
         logger.info("Recebido novo usuário: ", user.getLastName());
 
         User savedUser = userRepository.save(user);
