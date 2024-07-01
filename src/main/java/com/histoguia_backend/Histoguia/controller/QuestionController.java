@@ -1,12 +1,16 @@
 package com.histoguia_backend.Histoguia.controller;
 
+import com.histoguia_backend.Histoguia.model.Answer;
 import com.histoguia_backend.Histoguia.model.Question;
+import com.histoguia_backend.Histoguia.repository.AnswerRepository;
 import com.histoguia_backend.Histoguia.repository.QuestionRepository;
 import com.histoguia_backend.Histoguia.repository.ThemeRepository;
 import com.histoguia_backend.Histoguia.model.Theme;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
 
@@ -19,6 +23,9 @@ public class QuestionController {
 
     @Autowired
     private ThemeRepository themeRepository;
+
+    @Autowired
+    private AnswerRepository answerRepository;
 
     @GetMapping
     public ResponseEntity<List<Question>> getAllQuestions() {
@@ -36,4 +43,19 @@ public class QuestionController {
 
         return ResponseEntity.ok(savedQuestion);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteQuestion(@PathVariable Long id) {
+        Question question = questionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid question ID"));
+
+
+        List<Answer> answers = answerRepository.findByQuestionId(id);
+        answerRepository.deleteAll(answers);
+
+        questionRepository.delete(question);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }

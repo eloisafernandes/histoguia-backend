@@ -2,6 +2,8 @@ package com.histoguia_backend.Histoguia.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "questions")
 public class Question {
@@ -15,6 +17,7 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "theme_id", nullable = false)
     private Theme theme;
+
 
     public Long getId() {
         return id;
@@ -39,4 +42,6 @@ public class Question {
     public void setTheme(Theme theme) {
         this.theme = theme;
     }
+
+
 }
