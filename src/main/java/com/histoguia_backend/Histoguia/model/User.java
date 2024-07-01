@@ -21,6 +21,9 @@ public class User {
     private String email;
 
     @Column(nullable = false)
+    private boolean isAdmin;
+
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -58,6 +61,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public String getPassword() {
