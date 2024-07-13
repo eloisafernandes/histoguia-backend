@@ -34,9 +34,6 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private String lastName;
-
     @Column(nullable = true)
     private String phone;
 
@@ -51,6 +48,17 @@ public class User implements UserDetails {
 
     @Column(nullable = true)
     private String university;
+
+    public User(){
+        super();
+    }
+
+    public User(String name, String email, String password, UserRole role){
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
     public String getEmail() {
         return email;
@@ -72,7 +80,7 @@ public class User implements UserDetails {
         return role;
     }
 
-    public void setIsAdmin(UserRole role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 
@@ -86,14 +94,6 @@ public class User implements UserDetails {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getPhone() {
