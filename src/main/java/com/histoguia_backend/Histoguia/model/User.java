@@ -26,7 +26,7 @@ public class User implements UserDetails {
     private String email;
 
     @Column(nullable = false)
-    private boolean isAdmin;
+    private UserRole role;
 
     @Column(nullable = false)
     private String password;
@@ -68,12 +68,12 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public boolean getIsAdmin() {
-        return isAdmin;
+    public UserRole getRole() {
+        return role;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setIsAdmin(UserRole role) {
+        this.role = role;
     }
 
     public void setPassword(String password) {
@@ -138,7 +138,8 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        if(this.role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     public String getPassword() {
