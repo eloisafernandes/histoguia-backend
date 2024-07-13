@@ -33,6 +33,13 @@ public class QuestionController {
         return ResponseEntity.ok(questions);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Question> getQuestionById(@PathVariable Long id) {
+        Question question = questionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid question ID"));
+        return ResponseEntity.ok(question);
+    }
+
     @PostMapping
     public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
         Theme theme = themeRepository.findById(question.getTheme().getId())
@@ -57,5 +64,18 @@ public class QuestionController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Question> updateQuestion(@PathVariable Long id, @RequestBody Question questionDetails) {
+        return questionRepository.findById(id)
+                .map(question -> {
+                    question.setStatement(questionDetails.getStatement());
+                    question.setTheme(questionDetails.getTheme());
+                    Question updatedQuestion = questionRepository.save(question);
+                    return ResponseEntity.ok(updatedQuestion);
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 
 }

@@ -1,0 +1,41 @@
+[33mcommit 6209da63dd5431478352ac1d6dbbae11193fed88[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Willian Costa <68620087+WillianCosta12@users.noreply.github.com>
+Date:   Mon Jul 1 22:56:39 2024 -0300
+
+    Add SecurityConfig
+
+[33mcommit 54043d85a792674640988f9d4d5ed7a65f42761c[m
+Author: Willian Costa <68620087+WillianCosta12@users.noreply.github.com>
+Date:   Mon Jul 1 19:05:42 2024 -0300
+
+    Add isAdmin
+
+[33mcommit dcc74ecd699fa3247bfa2b07fb520ee847344921[m
+Author: Eloisa Fernandes <eloisafer16@gmail.com>
+Date:   Mon Jul 1 16:19:39 2024 -0300
+
+    deletar questão
+
+[33mcommit e9f5632ad92ca0f6489dae75e8b54207df20bdc3[m
+Author: Eloisa Fernandes <eloisafer16@gmail.com>
+Date:   Sun Jun 30 23:18:50 2024 -0300
+
+    inserir as alternativas
+
+[33mcommit fb1254cc6f6ad90a855862f9a46f843cc18ebd20[m
+Author: Eloisa Fernandes <eloisafer16@gmail.com>
+Date:   Sun Jun 30 14:55:19 2024 -0300
+
+    rota para obter as questões cadastradas no banco
+
+[33mcommit 4c044c9ce25d077d0b20719e5a4379f19144399a[m
+Author: Eloisa Fernandes <eloisafer16@gmail.com>
+Date:   Sun Jun 30 14:14:31 2024 -0300
+
+    cadastro de questão
+
+[33mcommit c640c0b458dd644715594c23934a41cc2231bb59[m
+Author: Eloisa Fernandes <eloisafer16@gmail.com>
+Date:   Sun Jun 30 00:10:18 2024 -0300
+
+    classe usuário + registro de usuário

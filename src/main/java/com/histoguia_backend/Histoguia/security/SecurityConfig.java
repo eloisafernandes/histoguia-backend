@@ -1,4 +1,4 @@
-package com.histoguia_backend.Histoguia.config;
+package com.histoguia_backend.Histoguia.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -10,7 +10,7 @@ public class Answer {
     private Long id;
 
     @Column(nullable = false)
-    private String answer; 
+    private String answer;
 
     @Column(nullable = true)
     private String explication;
