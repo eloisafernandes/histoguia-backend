@@ -46,9 +46,11 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Valid LoginDTO body ){
+    public ResponseEntity<?> login(@RequestBody @Valid LoginDTO body ){
         var token = new UsernamePasswordAuthenticationToken(body.email(), body.password());
         var authetication = manager.authenticate(token);
+
+        logger.info("Login Realizado: ");
 
         return ResponseEntity.ok(ts.createToken((User) authetication.getPrincipal()));
     }
