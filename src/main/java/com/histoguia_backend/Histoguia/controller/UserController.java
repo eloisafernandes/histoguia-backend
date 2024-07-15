@@ -48,11 +48,14 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid LoginDTO body ){
         var token = new UsernamePasswordAuthenticationToken(body.email(), body.password());
-        var authetication = manager.authenticate(token);
+        var authentication = manager.authenticate(token);
 
-        logger.info("Login Realizado: ");
+        if(authentication.isAuthenticated()){
+            logger.info("Login Realizado: " + body.email() + body.password());
+            return ResponseEntity.ok(ts.createToken((User) authentication.getPrincipal()));
+        }
 
-        return ResponseEntity.ok(ts.createToken((User) authetication.getPrincipal()));
+        return ResponseEntity.badRequest().build();
     }
 
     @CrossOrigin(origins = "http://localhost:3000") // Permitir requisições apenas de http://localhost:3000
