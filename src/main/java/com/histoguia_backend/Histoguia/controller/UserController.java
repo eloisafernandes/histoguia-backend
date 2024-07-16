@@ -76,6 +76,7 @@ public class UserController {
         var token = new UsernamePasswordAuthenticationToken(body.email(), body.password());
         var authentication = manager.authenticate(token);
 
+        //retorno do token
         if(authentication.isAuthenticated()){
             logger.info("Login Realizado: "  + optionalUser.getId() + " " + ts.createToken((User) authentication.getPrincipal()));
             return ResponseEntity.ok(new JwtResponse(ts.createToken((User) authentication.getPrincipal()), optionalUser.getId(), optionalUser.getRole()));

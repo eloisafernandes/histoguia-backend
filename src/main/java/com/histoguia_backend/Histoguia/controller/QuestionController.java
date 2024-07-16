@@ -2,15 +2,14 @@ package com.histoguia_backend.Histoguia.controller;
 
 import com.histoguia_backend.Histoguia.model.Answer;
 import com.histoguia_backend.Histoguia.model.Question;
+import com.histoguia_backend.Histoguia.service.QuestionService;
 import com.histoguia_backend.Histoguia.repository.AnswerRepository;
 import com.histoguia_backend.Histoguia.repository.QuestionRepository;
 import com.histoguia_backend.Histoguia.repository.ThemeRepository;
 import com.histoguia_backend.Histoguia.model.Theme;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
 
@@ -26,6 +25,7 @@ public class QuestionController {
 
     @Autowired
     private AnswerRepository answerRepository;
+
 
     @GetMapping
     public ResponseEntity<List<Question>> getAllQuestions() {
@@ -76,6 +76,19 @@ public class QuestionController {
                 })
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @Autowired
+    private QuestionService questionService;
+
+    @GetMapping("/theme/{themeId}/count/{numberOfQuestions}")
+    public List<Question> getQuestionsByThemeId(@PathVariable Long themeId, @PathVariable int numberOfQuestions) {
+        return questionService.getQuestionsByThemeId(themeId, numberOfQuestions);
+    }
+
+
+
+
+
 
 
 }
