@@ -50,6 +50,7 @@ public class UserController {
         var token = new UsernamePasswordAuthenticationToken(body.email(), body.password());
         var authentication = manager.authenticate(token);
 
+        //retorno do token
         if(authentication.isAuthenticated()){
             logger.info("Login Realizado: " + body.email() + body.password());
             return ResponseEntity.ok(ts.createToken((User) authentication.getPrincipal()));

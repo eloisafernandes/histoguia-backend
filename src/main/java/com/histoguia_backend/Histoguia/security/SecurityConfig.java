@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/users/register").permitAll();
-                    req.anyRequest().authenticated();
+                    req.anyRequest().permitAll();
                 })
                 .addFilterBefore(sf, UsernamePasswordAuthenticationFilter.class);
         return http.build();
