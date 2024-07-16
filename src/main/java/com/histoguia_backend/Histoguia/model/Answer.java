@@ -1,3 +1,4 @@
+
 package com.histoguia_backend.Histoguia.model;
 
 import jakarta.persistence.*;
@@ -10,18 +11,17 @@ public class Answer {
     private Long id;
 
     @Column(nullable = false)
-    private String answer; 
+    private String answer;
 
     @Column(nullable = true)
     private String explication;
 
     @Column(nullable = false)
-    private boolean isCorret;
+    private boolean corret;
 
     @ManyToOne
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
-
 
     public Long getId() {
         return id;
@@ -48,18 +48,18 @@ public class Answer {
     }
 
     public boolean isCorret() {
-        return isCorret;
+        return corret;
     }
 
     public void setCorret(boolean corret) {
-        isCorret = corret;
+        this.corret = corret;
     }
 
     public Question getQuestion() {
         return question;
     }
 
-    public void setQuestion(Question question) {
+    public void setQuestion( Question question) {
         this.question = question;
     }
 }
