@@ -16,7 +16,7 @@ public class ThemeController {
 
     @GetMapping
     public List<Theme> getAllThemes() {
-        return themeRepository.findAll();
+        return themeRepository.findAllOrderedById();
     }
 
     @GetMapping("/by-name")
